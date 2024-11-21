@@ -58,7 +58,6 @@ const getTransactions = async (req, res) => {
 // Generate statistics (total sales, sold/not-sold items)
 const getStatistics = async (req, res) => {
   const month = validateMonth(req.query.month);
-  console.log("Received month for statistics:", month);
   if (!month) {
     return res.status(400).json({ message: "Invalid or missing month." });
   }
@@ -101,7 +100,6 @@ const getStatistics = async (req, res) => {
 // Generate data for bar chart
 const getBarChartData = async (req, res) => {
   const month = validateMonth(req.query.month);
-  console.log("Received month for bar chart:", month);
   if (!month) {
     return res.status(400).json({ message: "Invalid or missing month." });
   }
@@ -141,7 +139,6 @@ const getBarChartData = async (req, res) => {
       firstDate: bucket.firstDate || null,
     }));
 
-    console.log("Formatted bar chart data:", formattedData); // Log the formatted data
     res.json(formattedData);
   } catch (error) {
     console.error(error);
