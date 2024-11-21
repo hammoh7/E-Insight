@@ -6,9 +6,6 @@ const Statistics = ({ selectedMonth }) => {
   const prevMonthRef = useRef();
 
   useEffect(() => {
-    console.log("Statistics component mounted or updated");
-    console.log("Previous month:", prevMonthRef.current);
-    console.log("Current month:", selectedMonth);
     
     if (!selectedMonth) {
       console.log("Selected month is null, skipping API call");

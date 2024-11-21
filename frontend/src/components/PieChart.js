@@ -3,7 +3,6 @@ import { Pie } from "react-chartjs-2";
 import { fetchPieChartData } from "../services/api";
 import { Chart, registerables } from "chart.js";
 
-// Register all necessary components
 Chart.register(...registerables);
 
 const PieChart = ({ selectedMonth }) => {
@@ -11,9 +10,6 @@ const PieChart = ({ selectedMonth }) => {
   const prevMonthRef = useRef();
 
   useEffect(() => {
-    console.log("PieChart component mounted or updated");
-    console.log("Previous month:", prevMonthRef.current);
-    console.log("Current month:", selectedMonth);
 
     if (!selectedMonth) {
       console.log("Selected month is null, skipping API call");
@@ -23,7 +19,6 @@ const PieChart = ({ selectedMonth }) => {
     const loadChartData = async () => {
       try {
         const data = await fetchPieChartData(selectedMonth);
-        console.log("Pie chart data received:", data);
 
         if (!Array.isArray(data) || data.length === 0) {
           console.error("Received data is not in the expected format or is empty.");

@@ -3,7 +3,6 @@ import { Bar } from "react-chartjs-2";
 import { fetchBarChartData } from "../services/api";
 import { Chart, registerables } from "chart.js";
 
-// Register all necessary components
 Chart.register(...registerables);
 
 const BarChart = ({ selectedMonth }) => {
@@ -13,9 +12,6 @@ const BarChart = ({ selectedMonth }) => {
   const prevMonthRef = useRef();
 
   useEffect(() => {
-    console.log("BarChart component mounted or updated");
-    console.log("Previous month:", prevMonthRef.current);
-    console.log("Current month:", selectedMonth);
 
     if (!selectedMonth) {
       console.log("Selected month is null, skipping API call");
@@ -25,7 +21,6 @@ const BarChart = ({ selectedMonth }) => {
     const loadChartData = async () => {
       try {
         const data = await fetchBarChartData(selectedMonth);
-        console.log("Bar chart data received:", data);
     
         if (!Array.isArray(data) || data.length === 0) {
           console.error("Received data is not in the expected format or is empty.");
