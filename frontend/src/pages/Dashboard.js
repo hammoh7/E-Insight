@@ -3,6 +3,7 @@ import MonthDropdown from "../components/MonthDropdown";
 import TransactionTable from "../components/TransactionTable";
 import BarChart from "../components/BarChart";
 import Statistics from "../components/Statistics";
+import PieChart from "../components/PieChart";
 
 const Dashboard = () => {
   const [selectedMonth, setSelectedMonth] = useState("March");
@@ -24,6 +25,7 @@ const Dashboard = () => {
         />
         <Statistics selectedMonth={selectedMonth} />
         <BarChart selectedMonth={selectedMonth} />
+        <PieChart selectedMonth={selectedMonth} />
       </div>
     </div>
   );

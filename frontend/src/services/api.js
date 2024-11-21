@@ -97,3 +97,40 @@ export const fetchBarChartData = async (monthName) => {
     throw error;
   }
 };  
+
+// Pie Chart data
+export const fetchPieChartData = async (monthName) => {
+  try {
+    if (!monthName) {
+      throw new Error("Month is required to fetch pie chart data");
+    }
+
+    const monthMap = {
+      January: 1,
+      February: 2,
+      March: 3,
+      April: 4,
+      May: 5,
+      June: 6,
+      July: 7,
+      August: 8,
+      September: 9,
+      October: 10,
+      November: 11,
+      December: 12,
+    };
+
+    const month = monthMap[monthName];
+    if (!month) {
+      throw new Error("Invalid month name");
+    }
+
+    const response = await axios.get(`${API_BASE_URL}/pie-chart`, {
+      params: { month },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching pie chart data:", error.message);
+    throw error;
+  }
+};
